@@ -14,4 +14,4 @@ Feel free to remind me in [issues](https://github.com/vanyauhalin/homebrew-tuist
 
 ## Details
 
-When testing the formula, `Open3.popen3` is used instead of `shell_output`. This is because when executing `version` command, Tuist tries to create a directory for configuration files. However, the runner does not have sufficient rights to create the directory, which causes the test to fail with an error.
+The formula lacks tests because when running any command, Tuist tries to create a directory for configuration files. However, the runner does not have sufficient permissions to create the directory, which causes the test to fail with an error. I'm unsure how to isolate the run.

@@ -11,10 +11,4 @@ class Tuist < Formula
   def install
     bin.install Dir["*"]
   end
-
-  test do
-    Open3.popen3("#{bin}/tuist", "version") do |_, stdout, _|
-      assert_match "3.18.0", stdout.read
-    end
-  end
 end
