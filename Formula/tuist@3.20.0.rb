@@ -1,4 +1,4 @@
-class Tuist < Formula
+class TuistAT3200 < Formula
   desc "Create, maintain, and interact with Xcode projects at scale"
   homepage "https://tuist.io"
   url "https://github.com/tuist/tuist/archive/refs/tags/3.20.0.tar.gz"
