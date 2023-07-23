@@ -1,0 +1,51 @@
+# Based on https://github.com/Homebrew/brew/blob/4.0.21/Library/.rubocop.yml
+
+AllCops:
+  NewCops: enable
+
+Layout/LineLength:
+  AllowedPatterns: ["desc"]
+
+Naming/FileName:
+  Regex: !ruby/regexp /^[\w\@\-\+\.]+(\.rb)?$/
+
+Style/Documentation:
+  Exclude:
+    - "Formula/*.rb"
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: always
+  Exclude:
+    - "Formula/*.rb"
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/StringLiteralsInInterpolation:
+  EnforcedStyle: double_quotes
+
+# Personal
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/Next:
+  Enabled: false
+
+Style/ParenthesesAroundCondition:
+  Enabled: false
