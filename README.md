@@ -1,4 +1,4 @@
-# Homebrew [Tuist](https://github.com/tuist/tuist) formula
+# Homebrew [Tuist](https://github.com/tuist/tuist) Formula
 
 At the start, the maintainers of Tuist [wanted to implement](https://github.com/Homebrew/homebrew-core/pull/30816) support for Homebrew. But they soon [changed their minds](https://github.com/tuist/tuist/issues/123#issuecomment-428535188) and [removed the mention of installation](https://github.com/tuist/tuist/pull/1307#issue-612478456) using Homebrew from the documentation. This repository is dedicated to those [who still want](https://github.com/tuist/tuist/discussions/5033) to use Tuist under Homebrew.
 
