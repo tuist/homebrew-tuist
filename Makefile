@@ -36,4 +36,4 @@ lint: #     Lint for the style.
 
 .PHONY: aliases
 aliases: #  Generate aliases.
-	@ruby makefile.rb aliases
+	@ruby ./scripts/aliases.rb
