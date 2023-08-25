@@ -17,6 +17,7 @@ Style/FrozenStringLiteralComment:
   EnforcedStyle: always
   Exclude:
     - "Formula/*.rb"
+    - "Gemfile"
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
@@ -48,4 +49,8 @@ Style/Next:
   Enabled: false
 
 Style/ParenthesesAroundCondition:
+  Enabled: false
+
+# https://github.com/sorbet/sorbet/issues/7170
+Style/TrailingUnderscoreVariable:
   Enabled: false
