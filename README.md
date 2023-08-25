@@ -5,6 +5,9 @@ At the start, the maintainers of Tuist [wanted to implement](https://github.com/
 > **Note** 
 > Tuist team didn't just drop support for Homebrew; they have their own distribution system.
 
+> **Warning** 
+> Building Tuist from sources on [M1](https://www.wikiwand.com/en/Apple_M1) may take up to 8-10 minutes.
+
 ```sh
 $ brew tap vanyauhalin/tuist
 $ brew install tuist
