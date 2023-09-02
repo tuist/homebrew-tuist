@@ -5,7 +5,16 @@ require "pathname"
 require "semantic"
 require "sorbet-runtime"
 
-state = T.let({}, T::Hash[String, [Semantic::Version, String, String]])
+state = T.let(
+  {},
+  T::Hash[
+    String,
+    T::Hash[
+      String,
+      [Semantic::Version, String, String]
+    ]
+  ]
+)
 
 current_directory = Pathname.new(__dir__)
 root_directory = current_directory.join("..").realpath
@@ -17,51 +26,59 @@ input_directory.entries.each do |file|
   matched = file.basename.to_s.match(/([\S\s]*)@([\S\s]*)\.rb/)
   next unless matched
 
-  matched_name = matched[1]
-  next unless matched_name
+  name = matched[1]
+  next unless name
 
-  matched_version = matched[2]
-  next unless matched_version
+  version = matched[2]
+  next unless version
 
-  version = Semantic::Version.new(matched_version)
+  semver = Semantic::Version.new(version)
 
-  latest, _, _ = state[""]
-  if latest.nil? || latest < version
-    state[""] = [
-      version,
-      matched_name,
-      "#{matched_name}@#{version}.rb"
+  tool = state[name]
+  tool ||= {}
+
+  semver_latest, _, _ = tool[""]
+  if semver_latest.nil? || semver_latest < semver
+    tool[""] = [
+      semver,
+      name,
+      "#{name}@#{semver}.rb"
     ]
   end
 
-  string_major = version.major.to_s
-  major, _, _ = state[string_major]
-  if major.nil? || major < version
-    state[string_major] = [
-      version,
-      "#{matched_name}@#{string_major}",
-      "#{matched_name}@#{version}.rb"
+  alias_major = semver.major.to_s
+  semver_major, _, _ = tool[alias_major]
+  if semver_major.nil? || semver_major < semver
+    tool[alias_major] = [
+      semver,
+      "#{name}@#{alias_major}",
+      "#{name}@#{semver}.rb"
     ]
   end
 
-  string_minor = "#{version.major}.#{version.minor}"
-  minor, _, _ = state[string_minor]
-  if minor.nil? || minor < version
-    state[string_minor] = [
-      version,
-      "#{matched_name}@#{string_minor}",
-      "#{matched_name}@#{version}.rb"
+  alias_minor = "#{semver.major}.#{semver.minor}"
+  semver_minor, _, _ = tool[alias_minor]
+  if semver_minor.nil? || semver_minor < semver
+    tool[alias_minor] = [
+      semver,
+      "#{name}@#{alias_minor}",
+      "#{name}@#{semver}.rb"
     ]
   end
+
+  state[name] = tool
 end
 
 output_directory = root_directory.join("Aliases")
 output_directory.mkdir(0o700) unless output_directory.exist?
 
-state.each_value do |_, output_basename, intput_basename|
-  output = output_directory.join(output_basename)
-  output.delete if output.exist?
-  input = input_directory.join(intput_basename)
-  relative_input = input.relative_path_from(output_directory)
-  output.make_symlink(relative_input)
+state.each do |_, versions|
+  versions.each do |_, meta|
+    _, output_basename, intput_basename = meta
+    output = output_directory.join(output_basename)
+    output.delete if output.exist?
+    input = input_directory.join(intput_basename)
+    relative_input = input.relative_path_from(output_directory)
+    output.make_symlink(relative_input)
+  end
 end
