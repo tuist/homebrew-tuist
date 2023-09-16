@@ -25,8 +25,8 @@ jobs:
 
     - name: Create Brewage
       run: |
-        sudo sysadminctl -addUser brewage -admin
+        sudo sysadminctl -addUser brewage -password brewage -admin
         sudo chown -R brewage "$(brew --prefix)/Homebrew"
 
     - name: Test Formula
-      run: sudo -u brewage brew test tuist
+      run: echo brewage | sudo -S -u brewage brew test tuist
