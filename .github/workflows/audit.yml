@@ -1,0 +1,24 @@
+name: audit
+
+on:
+- workflow_dispatch
+
+jobs:
+  test:
+    runs-on: macos-latest
+    timeout-minutes: 10
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Install Homebrew
+      uses: Homebrew/actions/setup-homebrew@master
+
+    - name: Tap Formula
+      run: brew tap vanyauhalin/tuist
+
+    - name: Audit Formula
+      run: brew audit --strict --online tuist
+
+    - name: Test Formula
+      run: sudo brew test tuist
