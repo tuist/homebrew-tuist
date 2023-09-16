@@ -20,5 +20,10 @@ jobs:
     - name: Audit Formula
       run: brew audit --strict --online tuist
 
+    - name: Create User
+      run: |
+        sudo adduser brewage
+        sudo addgroup brewage sudo
+
     - name: Test Formula
-      run: sudo brew test tuist
+      run: sudo -u brewage brew test tuist
