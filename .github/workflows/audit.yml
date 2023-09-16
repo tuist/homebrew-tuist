@@ -21,7 +21,9 @@ jobs:
       run: brew audit --strict --online tuist
 
     - name: Create Brewage
-      run: sudo sysadminctl -addUser brewage -admin
+      run: |
+        sudo sysadminctl -addUser brewage -admin
+        sudo chown -R brewage "$(brew --prefix)"
 
     - name: Test Formula
       run: sudo -u brewage brew test tuist
