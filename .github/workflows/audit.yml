@@ -20,6 +20,9 @@ jobs:
     - name: Audit Formula
       run: brew audit --strict --online tuist
 
+    - name: Install Formula
+      run: brew install tuist
+
     - name: Create Brewage
       run: |
         sudo sysadminctl -addUser brewage -admin
