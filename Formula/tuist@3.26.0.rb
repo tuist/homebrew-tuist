@@ -33,4 +33,8 @@ class TuistAT3260 < Formula
     bin.install ".build/release/ProjectDescription.swiftdoc"
     bin.install ".build/release/libProjectDescription.dylib"
   end
+
+  test do
+    assert_match version.to_s, shell_output("#{bin}/tuist version")
+  end
 end
