@@ -15,7 +15,7 @@ jobs:
       uses: Homebrew/actions/setup-homebrew@master
 
     - name: Tap Formula
-      run: brew tap vanyauhalin/tuist
+      run: brew tap tuist/tuist
 
     - name: Audit Formula
       run: brew audit --strict --online tuist

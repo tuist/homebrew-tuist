@@ -2,7 +2,7 @@
 
 At the start, the maintainers of Tuist [wanted to implement](https://github.com/Homebrew/homebrew-core/pull/30816) support for Homebrew. But they soon [changed their minds](https://github.com/tuist/tuist/issues/123#issuecomment-428535188) and [removed the mention of installation](https://github.com/tuist/tuist/pull/1307#issue-612478456) using Homebrew from the documentation. This repository is dedicated to those [who still want](https://github.com/tuist/tuist/discussions/5033) to use Tuist under Homebrew.
 
-Feel free to remind me in [issues](https://github.com/vanyauhalin/homebrew-tuist/issues) to update the formula if I forget.
+Feel free to remind me in [issues](https://github.com/tuist/homebrew-tuist/issues) to update the formula if I forget.
 
 ## Installation
 
@@ -12,7 +12,7 @@ Feel free to remind me in [issues](https://github.com/vanyauhalin/homebrew-tuist
 ### Using [TuistEnv](https://docs.tuist.io/guides/version-management) as Version Manager
 
 ```sh
-$ brew tap vanyauhalin/tuist
+$ brew tap tuist/tuist
 $ brew install tuistenv
 ```
 
@@ -25,7 +25,7 @@ $ tuistenv
 ### Using Homebrew as Version Manager
 
 ```sh
-$ brew tap vanyauhalin/tuist
+$ brew tap tuist/tuist
 $ brew install tuist
 ```
 
