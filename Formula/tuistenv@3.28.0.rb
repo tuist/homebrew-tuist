@@ -1,4 +1,4 @@
-class TuistenvAT3260 < Formula
+class TuistenvAT3280 < Formula
     desc "Managing Tuist versions"
     homepage "https://tuist.io"
     url "https://github.com/tuist/tuist/archive/refs/tags/3.28.0.tar.gz"
