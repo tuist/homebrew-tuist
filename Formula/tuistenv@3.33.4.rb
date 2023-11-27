@@ -7,7 +7,7 @@ class TuistenvAT3334 < Formula
     head "https://github.com/tuist/tuist.git", branch: "main"
   
     # https://github.com/tuist/tuist/blob/3.33.4/.xcode-version#L1
-    depends_on xcode: ["14.3.1", :build]
+    depends_on xcode: ["15.0.0", :build]
   
     # https://github.com/tuist/tuist/blob/3.33.4/Package.swift#L14
     depends_on macos: :monterey
