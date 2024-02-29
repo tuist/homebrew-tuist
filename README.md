@@ -2,26 +2,6 @@
 
 This repository contains a formula for developers who prefer Homebrew to manage Tuist installation.
 
-## Installation
-
-> **Warning** 
-> Building Tuist, TuistEnv from sources on [M1](https://www.wikiwand.com/en/Apple_M1) may take up to 8-10 minutes.
-
-### Using [TuistEnv](https://docs.tuist.io/guides/version-management) as Version Manager
-
-```sh
-$ brew tap tuist/tuist
-$ brew install tuistenv
-```
-
-After installation, allow `tuistenv` to initialize the environment.
-
-```sh
-$ tuistenv
-```
-
-### Using Homebrew as Version Manager
-
 ```sh
 $ brew tap tuist/tuist
 $ brew install tuist

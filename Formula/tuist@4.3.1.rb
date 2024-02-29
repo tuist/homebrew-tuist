@@ -12,8 +12,6 @@ class TuistAT431 < Formula
     bin.install "tuist"
     lib.install "ProjectDescription.framework"
     lib.install "ProjectDescription.framework.dSYM"
-    lib.install "ProjectAutomation.xcframework"
-    lib.install "ProjectAutomation.xcframework.dSYM"
     share.install "Templates"
   end
 
