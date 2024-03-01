@@ -13,6 +13,6 @@ group :development do
   # https://github.com/sorbet/sorbet/issues/4119
   install_if -> { RUBY_PLATFORM =~ /darwin/ || RUBY_PLATFORM =~ /x86_64/ } do
     gem "sorbet", "~> 0.5.10924"
-    gem "tapioca", "~> 0.11.8"
+    gem "tapioca", "~> 0.12.0"
   end
 end
