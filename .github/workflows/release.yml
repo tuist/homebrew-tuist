@@ -1,0 +1,26 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: The version for which the formula will be generated
+        required: true
+
+permissions:
+  contents: write
+
+env:
+  MISE_EXPERIMENTAL: 1
+
+jobs:
+  release:
+    name: Release
+    runs-on: 'blacksmith-4vcpu-ubuntu-2204'
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+      - uses: jdx/mise-action@v2
+      - run: 
+
+      

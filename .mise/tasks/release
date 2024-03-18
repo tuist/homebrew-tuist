@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+# mise description="Releases a particular version of Tuist"
+
+require "pathname"
+require "semantic"
+
+version = ARGV.first
+unless version
+  puts "Usage: ruby scripts/release.rb <version>"
+  exit 1
+end
+

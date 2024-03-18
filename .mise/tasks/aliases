@@ -1,20 +1,11 @@
+#!/usr/bin/env ruby
 # frozen_string_literal: true
 # typed: true
-
+# mise description="Generates aliases for the latest versions of the tools"
 require "pathname"
 require "semantic"
-require "sorbet-runtime"
 
-state = T.let(
-  {},
-  T::Hash[
-    String,
-    T::Hash[
-      String,
-      [Semantic::Version, String, String]
-    ]
-  ]
-)
+state = {}
 
 current_directory = Pathname.new(__dir__)
 root_directory = current_directory.join("..").realpath
