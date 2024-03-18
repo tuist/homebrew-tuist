@@ -1,0 +1,60 @@
+#!/usr/bin/env ruby
+# mise description="Releases a particular version of Tuist"
+
+require "pathname"
+require "semantic"
+require "optparse"
+
+options = {}
+OptionParser.new do |opts|
+  opts.banner = "Usage: release.rb [options]"
+
+  opts.on("-v", "--version VERSION", "Version to release") do |v|
+    options[:version] = v
+  end
+  opts.on("-s", "--sha256 SHA256", "The sha256 of the tuist.zip") do |sha256|
+    options[:sha256] = sha256
+  end
+end.parse!
+
+if !options[:version] || !options[:sha256]
+  puts "Please provide the version and the sha256 of the tuist.zip"
+  exit 1
+end
+
+version = options[:version]
+sha256 = options[:sha256]
+
+release_url = "https://github.com/tuist/tuist/releases/tag/#{version}"
+sha256_url = "https://github.com/tuist/tuist/releases/download/#{version}/SHASUMS256.txt"
+current_directory = Pathname.new(__dir__)
+root_directory = current_directory.join("../..").realpath
+version_formula_path = File.join(root_directory, "Formula/tuist@#{version}.rb")
+
+formula_content = <<~FORMULA
+class TuistAT#{version.gsub(".", "")} < Formula
+  desc "Create, maintain, and interact with Xcode projects at scale"
+  homepage "https://tuist.io"
+  url "https://github.com/tuist/tuist/releases/download/#{version}/tuist.zip"
+  sha256 "#{sha256}"
+  license "MIT"
+  head "https://github.com/tuist/tuist.git", branch: "main"
+
+  depends_on macos: :monterey
+
+  def install
+    bin.install "tuist"
+    lib.install "ProjectDescription.framework"
+    lib.install "ProjectDescription.framework.dSYM"
+    lib.install "ProjectAutomation.xcframework"
+    lib.install "ProjectAutomation.xcframework.dSYM"
+    share.install "Templates"
+  end
+
+  test do
+    assert_match version.to_s, shell_output("\${bin}/tuist version")
+  end
+end
+FORMULA
+
+File.write(version_formula_path, formula_content)

@@ -1,23 +1,14 @@
+#!/usr/bin/env ruby
 # frozen_string_literal: true
 # typed: true
-
+# mise description="Generates aliases for the latest versions of the tools"
 require "pathname"
 require "semantic"
-require "sorbet-runtime"
 
-state = T.let(
-  {},
-  T::Hash[
-    String,
-    T::Hash[
-      String,
-      [Semantic::Version, String, String]
-    ]
-  ]
-)
+state = {}
 
 current_directory = Pathname.new(__dir__)
-root_directory = current_directory.join("..").realpath
+root_directory = current_directory.join("../..").realpath
 
 input_directory = root_directory.join("Formula")
 input_directory.mkdir(0o700) unless input_directory.exist?
