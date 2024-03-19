@@ -27,6 +27,9 @@ jobs:
       - name: Generate formula
         run: |
           mise run release -- -v ${{ github.event.inputs.version }} -s ${{ github.event.inputs.sha256 }}
+      - name: Install dependencies
+        run: |
+          bundle install
       - name: Update @latest aliases
         run: |
           mise run aliases
