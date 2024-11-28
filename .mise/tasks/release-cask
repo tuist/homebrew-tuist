@@ -1,0 +1,54 @@
+#!/usr/bin/env ruby
+# mise description="Releases a particular version of Tuist cask"
+
+require "pathname"
+require "optparse"
+
+options = {}
+OptionParser.new do |opts|
+  opts.banner = "Usage: release.rb [options]"
+
+  opts.on("-v", "--version VERSION", "Version to release") do |v|
+    options[:version] = v
+  end
+  opts.on("-s", "--sha256 SHA256", "The sha256 of the Tuist.dmg") do |sha256|
+    options[:sha256] = sha256
+  end
+end.parse!
+
+if !options[:version] || !options[:sha256]
+  puts "Please provide the version and the sha256 of the tuist.zip"
+  exit 1
+end
+
+version = options[:version]
+sha256 = options[:sha256]
+
+release_url = "https://github.com/tuist/tuist/releases/tag/#{version}"
+sha256_url = "https://github.com/tuist/tuist/releases/download/#{version}/SHASUMS256.txt"
+current_directory = Pathname.new(__dir__)
+root_directory = current_directory.join("../..").realpath
+version_cask_path = File.join(root_directory, "Casks/tuist@#{version}.rb")
+
+cask_content = <<~CASK
+cask "tuist@#{version}" do
+    version "#{version}"
+    sha256 "4e121a0fa1803a9837cbfce740bedbd03531815df69ebd69dc92d555ab6b22f2"
+
+    url "https://github.com/tuist/tuist/releases/download/app@#{version}/Tuist.dmg"
+    name "Tuist"
+    desc "Tuist macOS app"
+    homepage "https://github.com/tuist/tuist"
+
+    auto_updates true
+    conflicts_with formula: "tuist"
+
+    app "Tuist.app"
+end
+CASK
+
+File.write(version_cask_path, cask_content)
+
+latest_cask_path = File.join(root_directory, "Casks/tuist.rb")
+latest_cask_content = cask_content.sub(/^cask "tuist"/, 'cask "tuist"')
+File.write(latest_cask_path, latest_cask_content)
