@@ -1,4 +1,4 @@
-cask "tuist@0.9.0" do
+cask "tuist" do
     version "0.9.0"
     sha256 "068bd7cdf3193590aaf560b2e403701b6f6f75f5537df9b67344c0ad0c9c7be9"
 
