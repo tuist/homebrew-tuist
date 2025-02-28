@@ -33,7 +33,7 @@ version_cask_path = File.join(root_directory, "Casks/tuist@#{version}.rb")
 cask_content = <<~CASK
 cask "tuist@#{version}" do
     version "#{version}"
-    sha256 "4e121a0fa1803a9837cbfce740bedbd03531815df69ebd69dc92d555ab6b22f2"
+    sha256 "#{sha256}"
 
     url "https://github.com/tuist/tuist/releases/download/app@#{version}/Tuist.dmg"
     name "Tuist"
