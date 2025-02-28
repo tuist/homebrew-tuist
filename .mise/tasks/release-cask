@@ -31,7 +31,7 @@ root_directory = current_directory.join("../..").realpath
 version_cask_path = File.join(root_directory, "Casks/tuist@#{version}.rb")
 
 cask_content = <<~CASK
-cask "tuist@#{version}" do
+cask "tuist" do
     version "#{version}"
     sha256 "#{sha256}"
 
