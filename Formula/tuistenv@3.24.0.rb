@@ -1,8 +1,8 @@
 class TuistenvAT3240 < Formula
   desc "Managing Tuist versions"
   homepage "https://tuist.io"
-  url "https://github.com/tuist/tuist/archive/refs/tags/3.24.0.tar.gz"
-  sha256 "a05a95593a649e86169551741fcbcc45f97bc31ab20dbd4032f0c0db9b3bffe1"
+  url "https://github.com/tuist/tuist/archive/refs/tags/4.51.0.tar.gz"
+  sha256 "e91b904671ff5974f96241e7362758b263e48d0a38e6944617571a0972a1c2ae"
   license "MIT"
   head "https://github.com/tuist/tuist.git", branch: "main"
 
