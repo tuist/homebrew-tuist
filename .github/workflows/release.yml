@@ -33,6 +33,6 @@ jobs:
       - name: Update @latest aliases
         run: |
           mise run aliases
-      - uses: stefanzweifel/git-auto-commit-action@v5
+      - uses: stefanzweifel/git-auto-commit-action@v6
         with:
           commit_message: "Release ${{ github.event.inputs.version }}"
