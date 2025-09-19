@@ -1,8 +1,8 @@
 class TuistAT4340 < Formula
   desc "Create, maintain, and interact with Xcode projects at scale"
   homepage "https://tuist.io"
-  url "https://github.com/tuist/tuist/releases/download/4.34.0/tuist.zip"
-  sha256 "bfcd66af10fa243763ed177adda78a03991d8f45fe7eefa7ee156df4b6a028df"
+  url "https://github.com/tuist/tuist/archive/refs/tags/4.78.0.tar.gz"
+  sha256 "82b0d76ea1f3a64079546065f992a207569b26b60ce848d854eec2d29ea5e3c7"
   license "MIT"
   head "https://github.com/tuist/tuist.git", branch: "main"
 
