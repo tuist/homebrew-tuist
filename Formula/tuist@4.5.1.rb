@@ -7,6 +7,8 @@ class TuistAT451 < Formula
     head "https://github.com/tuist/tuist.git", branch: "main"
   
     depends_on macos: :monterey
+
+  preserve_rpath
   
     def install
       bin.install "tuist"
