@@ -8,6 +8,8 @@ class TuistAT3365 < Formula
 
   depends_on macos: :monterey
 
+  preserve_rpath
+
   def install
     bin.install "tuist"
     lib.install "ProjectDescription.framework"

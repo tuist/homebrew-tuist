@@ -12,6 +12,8 @@ class TuistAT3211 < Formula
   # https://github.com/tuist/tuist/blob/3.21.1/Package.swift#L14
   depends_on macos: :monterey
 
+  preserve_rpath
+
   def install
     # https://github.com/tuist/tuist/blob/3.21.1/.github/workflows/tuist.yml#L81
     system "swift", "build",
