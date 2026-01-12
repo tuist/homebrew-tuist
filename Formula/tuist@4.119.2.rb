@@ -8,6 +8,8 @@ class TuistAT41192 < Formula
 
   depends_on macos: :monterey
 
+  keg_only :versioned_formula
+
   def install
     bin.install "tuist"
     lib.install "ProjectDescription.framework"

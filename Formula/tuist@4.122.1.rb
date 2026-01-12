@@ -8,6 +8,8 @@ class TuistAT41221 < Formula
 
   depends_on macos: :monterey
 
+  keg_only :versioned_formula
+
   preserve_rpath
 
   def install
