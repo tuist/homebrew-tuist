@@ -30,6 +30,6 @@ jobs:
       - name: Generate formula
         run: |
           mise run release-cask -- -v ${{ github.event.inputs.version }} -s ${{ github.event.inputs.sha256 }}
-      - uses: stefanzweifel/git-auto-commit-action@v6
+      - uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: "Release ${{ github.event.inputs.version }}"
