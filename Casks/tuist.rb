@@ -1,8 +1,8 @@
 cask "tuist" do
-    version "0.25.5"
-    sha256 "8df7e8778aeed368af21c7dc48bc3870acc8abecb8e73991b7e88f3745b98420"
+    version "0.25.3"
+    sha256 "4c0848a4fbcc2c60b0ead2f90b72e28c86634a5c364faf62a6a0c71474dbfc6c"
 
-    url "https://github.com/tuist/tuist/releases/download/app@0.25.5/Tuist.dmg"
+    url "https://github.com/tuist/tuist/releases/download/app@0.25.3/Tuist.dmg"
     name "Tuist"
     desc "Tuist macOS app"
     homepage "https://github.com/tuist/tuist"
