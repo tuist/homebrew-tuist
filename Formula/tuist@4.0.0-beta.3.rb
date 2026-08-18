@@ -1,4 +1,4 @@
-class TuistAT400-beta3 < Formula
+class TuistAT400Beta3 < Formula
   desc "Create, maintain, and interact with Xcode projects at scale"
   homepage "https://tuist.io"
   url "https://github.com/tuist/tuist/releases/download/4.0.0-beta.3/tuist.zip"
