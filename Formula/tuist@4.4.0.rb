@@ -1,4 +1,4 @@
-class TuistAT44 < Formula
+class TuistAT440 < Formula
     desc "Create, maintain, and interact with Xcode projects at scale"
     homepage "https://tuist.io"
     url "https://github.com/tuist/tuist/releases/download/4.4.0/tuist.zip"
