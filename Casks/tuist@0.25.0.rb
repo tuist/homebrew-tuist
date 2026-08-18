@@ -1,4 +1,4 @@
-cask "tuist" do
+cask "tuist@0.25.0" do
     version "0.25.0"
     sha256 "554649c1444474726b75933113b06ed6fd11c23baf24fb7f48a268ec7ae27b76"
 
@@ -8,7 +8,6 @@ cask "tuist" do
     homepage "https://github.com/tuist/tuist"
 
     auto_updates true
-    conflicts_with formula: "tuist"
 
     app "Tuist.app"
 end

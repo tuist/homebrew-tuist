@@ -30,25 +30,27 @@ current_directory = Pathname.new(__dir__)
 root_directory = current_directory.join("../..").realpath
 version_cask_path = File.join(root_directory, "Casks/tuist@#{version}.rb")
 
-cask_content = <<~CASK
-cask "tuist" do
-    version "#{version}"
-    sha256 "#{sha256}"
+# Homebrew derives a cask's token from its file name and refuses to load the
+# cask when the header disagrees, so each file has to declare its own token.
+def cask_content(token, version, sha256)
+  <<~CASK
+    cask "#{token}" do
+        version "#{version}"
+        sha256 "#{sha256}"
 
-    url "https://github.com/tuist/tuist/releases/download/app@#{version}/Tuist.dmg"
-    name "Tuist"
-    desc "Tuist macOS app"
-    homepage "https://github.com/tuist/tuist"
+        url "https://github.com/tuist/tuist/releases/download/app@#{version}/Tuist.dmg"
+        name "Tuist"
+        desc "Tuist macOS app"
+        homepage "https://github.com/tuist/tuist"
 
-    auto_updates true
-    conflicts_with formula: "tuist"
+        auto_updates true
 
-    app "Tuist.app"
+        app "Tuist.app"
+    end
+  CASK
 end
-CASK
 
-File.write(version_cask_path, cask_content)
+File.write(version_cask_path, cask_content("tuist@#{version}", version, sha256))
 
 latest_cask_path = File.join(root_directory, "Casks/tuist.rb")
-latest_cask_content = cask_content.sub(/^cask "tuist"/, 'cask "tuist"')
-File.write(latest_cask_path, latest_cask_content)
+File.write(latest_cask_path, cask_content("tuist", version, sha256))
