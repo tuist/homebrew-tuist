@@ -31,6 +31,19 @@ current_directory = Pathname.new(__dir__)
 root_directory = current_directory.join("../..").realpath
 version_formula_path = File.join(root_directory, "Formula/tuist@#{version}.rb")
 
+# tuist.zip ships the Xcode cache proxy and CAS plugin since 4.203.0. Tuist looks
+# for both next to the tuist executable or in the lib directory beside it.
+install_lines = [
+  %(bin.install "tuist"),
+  %(lib.install "ProjectDescription.framework"),
+  %(lib.install "ProjectDescription.framework.dSYM"),
+  %(share.install "Templates"),
+]
+if Semantic::Version.new(version) >= Semantic::Version.new("4.203.0")
+  install_lines << %(bin.install "tuist-cas-proxy")
+  install_lines << %(lib.install "libtuist_cas_plugin.dylib")
+end
+
 formula_content = <<~FORMULA
 class TuistAT#{version.gsub(".", "")} < Formula
   desc "Create, maintain, and interact with Xcode projects at scale"
@@ -45,10 +58,7 @@ class TuistAT#{version.gsub(".", "")} < Formula
   preserve_rpath
 
   def install
-    bin.install "tuist"
-    lib.install "ProjectDescription.framework"
-    lib.install "ProjectDescription.framework.dSYM"
-    share.install "Templates"
+#{install_lines.map { |line| "    #{line}" }.join("\n")}
   end
 
   test do
