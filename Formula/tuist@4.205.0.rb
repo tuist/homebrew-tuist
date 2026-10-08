@@ -15,6 +15,8 @@ class TuistAT42050 < Formula
     lib.install "ProjectDescription.framework"
     lib.install "ProjectDescription.framework.dSYM"
     share.install "Templates"
+    bin.install "tuist-cas-proxy"
+    lib.install "libtuist_cas_plugin.dylib"
   end
 
   test do
